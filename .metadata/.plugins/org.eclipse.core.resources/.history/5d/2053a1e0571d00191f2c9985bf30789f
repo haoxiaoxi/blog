@@ -1,0 +1,10 @@
+package com.ph.security.core.properties.defaults;
+
+/**
+ * 配置项的默认值
+ * @author panha
+ *
+ */
+public interface SecurityConstants {
+
+}

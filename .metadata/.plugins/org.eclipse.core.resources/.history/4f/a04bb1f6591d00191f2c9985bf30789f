@@ -1,0 +1,50 @@
+package com.ph.security.brower;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ph.security.core.support.SimpleResponse;
+
+@RestController
+public class BrowerSecurityController {
+
+	private Logger logger = LoggerFactory.getLogger(getClass());
+	
+	//可以在RequestCache中将你之前请求的路径获取
+	private RequestCache requestCache  = new HttpSessionRequestCache();
+	//用于路径重定向
+	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+	//配置数据
+	
+	@RequestMapping("/authentication/require")
+	@ResponseStatus(code = HttpStatus.UNAUTHORIZED)//当是返回的时候，返回的状态值是401
+	public SimpleResponse requireAuthentication(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		//从RequestCache将之前请求的Request获取
+		SavedRequest savedRequest = requestCache.getRequest(request, response);
+		if(savedRequest!=null) {
+			String url = savedRequest.getRedirectUrl();
+			logger.info("引发跳转的请求是:" + url);
+			//判断引发的跳转是否是由html结尾的，是的话则跳转到登陆界面
+			if(StringUtils.endsWithIgnoreCase(url, ".html")){
+				redirectStrategy.sendRedirect(request, response, "/phLogin.html");
+			}
+		}
+		return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页");
+	}
+	
+}

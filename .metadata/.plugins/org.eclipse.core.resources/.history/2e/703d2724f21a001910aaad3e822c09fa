@@ -1,0 +1,15 @@
+package com.ph.util;
+
+public class FtpFileUtil {
+
+    //ftp服务器ip地址
+    private static final String FTP_ADDRESS = "101.132.1.113";
+    //端口号
+    private static final int FTP_PORT = 21;
+    //用户名
+    private static final String FTP_USERNAME = "ftp";
+    //密码
+    private static final String FTP_PASSWORD = "123456";
+    //图片路径
+    private static final String FTP_BASEPATH = "/home/ftpadmin/health/images";
+}

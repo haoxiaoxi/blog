@@ -1,0 +1,33 @@
+package com.ph.web.controller;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ph.util.FtpFileUtil;
+
+@RestController
+public class FileController {
+	
+	
+	@GetMapping("file")
+	public String upload() throws Exception {
+
+		MultipartFile file = new MockMultipartFile("file", "test.txt", "multipart/form-data", "hello upload".getBytes("UTF-8"));
+		String fileName = file.getOriginalFilename();
+        InputStream inputStream=file.getInputStream();
+        String filePath=null;
+
+        Boolean flag=FtpFileUtil.uploadFile(fileName,inputStream);
+        if(flag==true){
+            System.out.println("ftp上传成功！");
+            filePath=fileName;
+        }
+        System.out.println(filePath);
+        return  filePath;  //该路径图片名称，前端框架可用ngnix指定的路径+filePath,即可访问到ngnix图片服务器中的图片
+	} 
+}

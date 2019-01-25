@@ -1,0 +1,5 @@
+package com.ph.security.core.support;
+
+public class SimpleResponse {
+
+}

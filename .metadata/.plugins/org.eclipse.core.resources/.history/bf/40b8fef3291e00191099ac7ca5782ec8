@@ -1,0 +1,7 @@
+package com.ph.security.core.properties.conf;
+
+@Configuration
+@EnableConfigurationProperties(SecurityProperties.class)
+public class SecurityCoreConfig {
+
+}

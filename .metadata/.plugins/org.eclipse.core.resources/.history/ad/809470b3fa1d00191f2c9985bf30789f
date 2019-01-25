@@ -1,0 +1,9 @@
+package com.ph.security.core.validate.code;
+
+/**
+ * @author panha
+ *
+ */
+public interface ValidateCodeProcessor {
+
+}

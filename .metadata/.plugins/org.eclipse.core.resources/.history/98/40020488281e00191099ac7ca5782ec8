@@ -1,0 +1,33 @@
+package com.ph;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ph.security.core.properties.SecurityProperties;
+
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+	
+	@Bean
+    @ConfigurationProperties(prefix = "ph.security")
+    public SecurityProperties securityProperties(){
+		SecurityProperties mp = new SecurityProperties();
+        System.out.println("zheli " + mp);
+        return mp;
+
+    }
+	
+	@GetMapping("hello")
+	public String hello() {
+		return "spring security hello";
+	}
+
+}

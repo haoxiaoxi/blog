@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>单文件上传</p>
+<form action="upload" method="POST" enctype="multipart/form-data">
+    文件：<input type="file" name="file"/>
+    <input type="submit"/>
+</form>
+<hr/>
+<p>文件下载</p>
+<a href="download">下载文件</a>
+<hr/>
+<p>多文件上传</p>
+<form method="POST" enctype="multipart/form-data" action="batch">
+    <p>文件1：<input type="file" name="file"/></p>
+    <p>文件2：<input type="file" name="file"/></p>
+    <p><input type="submit" value="上传"/></p>
+</form>
+</body>
+</html>
+
+作者：dalaoyang
+链接：https://www.jianshu.com/p/85017f5ecba1
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。

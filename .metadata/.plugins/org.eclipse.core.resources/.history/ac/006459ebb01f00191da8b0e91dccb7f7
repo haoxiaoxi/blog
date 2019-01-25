@@ -1,0 +1,17 @@
+package com.ph.security.rbac.init;
+
+public interface DataInitializer {
+
+	/**
+	 * 初始化器的执行顺序，数值越大的初始化器越靠后执行
+	 * 
+	 * @return
+	 */
+	Integer getIndex();
+
+	/**
+	 * 初始化数据的方法
+	 * @throws Exception 
+	 */
+	void init() throws Exception;
+}

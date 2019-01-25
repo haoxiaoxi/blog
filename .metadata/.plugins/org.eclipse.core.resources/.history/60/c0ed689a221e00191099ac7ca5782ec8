@@ -1,0 +1,8 @@
+package com.ph.security.core.validate.code;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ValidateCodeProcessorHolder {
+
+}

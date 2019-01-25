@@ -1,0 +1,15 @@
+package com.ph.security.core.properties;
+
+public class SecurityValidateCodeProperties {
+
+	private SecurityImageValidateCodeProperties image = new SecurityImageValidateCodeProperties();
+
+	public SecurityImageValidateCodeProperties getImage() {
+		return image;
+	}
+
+	public void setImage(SecurityImageValidateCodeProperties image) {
+		this.image = image;
+	}
+	
+}

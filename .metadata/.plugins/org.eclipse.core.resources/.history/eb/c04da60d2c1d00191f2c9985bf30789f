@@ -1,0 +1,9 @@
+package com.ph.security.brower;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class BrowerSecurityController {
+
+	private Logger logger = LoggerFactory.getLogger(getClass());
+}

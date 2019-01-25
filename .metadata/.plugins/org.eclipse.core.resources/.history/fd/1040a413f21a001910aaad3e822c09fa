@@ -1,0 +1,5 @@
+package com.ph.util;
+
+public class FtpFileUtil {
+
+}

@@ -1,0 +1,29 @@
+package com.ph.security.brower;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+import com.ph.security.core.properties.defaults.SecurityConstants;
+
+@Configuration
+@EnableWebSecurity
+public class BrowerSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+		.formLogin()
+			.loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL) //配置页面路径是需要以/开始,通过配置一个controller对跳转
+			.loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)
+			.and()
+		.authorizeRequests()
+			.antMatchers("/authentication/require","/phLogin.html").permitAll()
+			.anyRequest()
+			.authenticated()
+			.and()
+		.csrf().disable();
+		
+	}
+}

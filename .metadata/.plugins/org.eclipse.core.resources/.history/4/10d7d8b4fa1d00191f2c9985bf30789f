@@ -1,0 +1,10 @@
+package com.ph.security.core.validate.code;
+
+/**
+ * 校验码处理器，封装不同校验码的处理逻辑
+ * @author panha
+ *
+ */
+public interface ValidateCodeProcessor {
+
+}

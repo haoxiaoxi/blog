@@ -1,0 +1,10 @@
+package com.ph.security.core.validate.code;
+
+/**
+ * 生成验证码接口
+ * @author panha
+ *
+ */
+public interface ValidateCodeGenerator {
+
+}

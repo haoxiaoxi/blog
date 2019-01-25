@@ -1,0 +1,11 @@
+package com.ph.security.core.properties;
+
+/**
+ * 浏览器环境配置项
+ * @author panha
+ *
+ */
+public class SecurityBrowserProperties {
+
+	private String phLogin = "";
+}

@@ -1,0 +1,34 @@
+package com.ph.security.core.properties.defaults;
+
+/**
+ * 配置项的默认值
+ * @author panha
+ *
+ */
+public interface SecurityConstants {
+
+	/**
+	 * 当请求需要身份认证时，默认跳转的url
+	 * 
+	 * @see SecurityController
+	 */
+	String DEFAULT_UNAUTHENTICATION_URL = "/authentication/require";
+	/**
+	 * 默认的用户名密码登录请求处理url
+	 * 
+	 * @see BrowerSecurityConfig
+	 */
+	String DEFAULT_SIGN_IN_PROCESSING_URL_FORM = "/authentication/form";
+	/**
+	 * 默认登录页面
+	 * 
+	 * @see SecurityController
+	 */
+	String DEFAULT_SIGN_IN_PAGE_URL = "/phLogin.html";
+	
+	
+	
+	
+	
+	//验证码
+}

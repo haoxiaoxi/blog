@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ph-security-brower/src/main/resources/resources/imooc-signIn.html&apos; to &apos;login.html&apos;" description="Rename resource &apos;imooc-signIn.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/resources/imooc-signIn.html" name="login.html" stamp="1547800979756" updateReferences="true"/>
+</session>

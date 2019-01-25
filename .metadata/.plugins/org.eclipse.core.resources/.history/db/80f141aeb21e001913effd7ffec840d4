@@ -1,0 +1,23 @@
+package com.ph.security.core.validate.code;
+
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+public class ValidateCodeFilter extends OncePerRequestFilter implements InitializingBean{
+
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+}

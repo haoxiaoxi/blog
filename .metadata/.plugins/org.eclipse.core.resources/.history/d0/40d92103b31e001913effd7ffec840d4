@@ -1,0 +1,52 @@
+package com.ph.security.core.validate.code;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+public class ValidateCodeFilter extends OncePerRequestFilter implements InitializingBean{
+
+	/**
+	 * 验证码校验失败处理器
+	 */
+	@Autowired
+	private AuthenticationFailureHandler authenticationFailureHandler;
+	
+	/**
+	 * 系统中的校验码处理器
+	 */
+	@Autowired
+	private ValidateCodeProcessorHolder validateCodeProcessorHolder;
+	
+	/**
+	 * 存放所有需要校验验证码的url
+	 */
+	private Map<String, ValidateCodeType> urlMap = new HashMap<>();
+	
+	/* (non-Javadoc)
+	 * @see org.springframework.web.filter.GenericFilterBean#afterPropertiesSet()
+	 * 初始化配置信息
+	 */
+	@Override
+	public void afterPropertiesSet() throws ServletException {
+		super.afterPropertiesSet();
+	}
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+}

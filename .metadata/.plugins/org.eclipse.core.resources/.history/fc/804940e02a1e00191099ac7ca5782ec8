@@ -1,0 +1,6 @@
+package com.ph.security.core.validate.code;
+
+@Configuration
+public class ValidateCodeBeanConfig {
+
+}

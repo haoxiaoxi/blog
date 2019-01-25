@@ -1,0 +1,15 @@
+package com.ph.security.core.validate.code.image;
+
+import org.springframework.web.context.request.ServletWebRequest;
+
+import com.ph.security.core.validate.code.impl.AbstractValidateCodeProcessor;
+
+public class ImageValidateCodeProcessor extends AbstractValidateCodeProcessor<ImageValidateCode> {
+
+	@Override
+	protected void send(ServletWebRequest request, ImageValidateCode validateCode) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

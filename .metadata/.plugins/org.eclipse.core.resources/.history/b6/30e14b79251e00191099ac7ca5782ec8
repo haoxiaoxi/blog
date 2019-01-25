@@ -1,0 +1,44 @@
+package com.ph.security.brower;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+import com.ph.security.brower.authentication.PhAuthenctiationFailureHandler;
+import com.ph.security.brower.authentication.PhAuthenticationSuccessHandler;
+import com.ph.security.core.properties.defaults.SecurityConstants;
+
+@Configuration
+@EnableWebSecurity
+public class BrowerSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	//登录成功后的处理器
+	@Autowired
+	private PhAuthenticationSuccessHandler phAuthenticationSuccessHandler;
+	//登录失败后的处理器
+	@Autowired
+	private PhAuthenctiationFailureHandler phAuthenctiationFailureHandler;
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+		.formLogin()
+			.loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL) //配置页面路径是需要以/开始,通过配置一个controller对跳转
+			.loginProcessingUrl(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)//登录的action路径
+			.successHandler(phAuthenticationSuccessHandler)//登录成功的操作
+			.failureHandler(phAuthenctiationFailureHandler)//登录失败的操作
+			.and()
+		.authorizeRequests()
+			.antMatchers(
+					SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
+					SecurityConstants.DEFAULT_SIGN_IN_PAGE_URL
+					).permitAll()
+			.anyRequest()
+			.authenticated()
+			.and()
+		.csrf().disable();
+		
+	}
+}

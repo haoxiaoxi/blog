@@ -1,0 +1,24 @@
+package com.ph.security.core.validate.code.image;
+
+import java.awt.image.BufferedImage;
+
+import com.ph.security.core.validate.code.ValidateCode;
+
+public class ImageValidateCode extends ValidateCode {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6330521640926118372L;
+	
+	private BufferedImage image;
+
+	public ImageValidateCode(BufferedImage image,String code, int expireIn) {
+		
+		super(code, expireIn);
+		this.image = image;
+	}
+	
+	
+
+}

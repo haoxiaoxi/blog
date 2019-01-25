@@ -1,0 +1,16 @@
+package com.ph.security.core.properties;
+
+import com.ph.security.core.properties.defaults.LoginResponseType;
+
+/**
+ * 浏览器环境配置项
+ * @author panha
+ *
+ */
+public class SecurityBrowserProperties {
+
+	//
+	private String phLogin = "/phLogin.html";
+	//默认是json格式
+	private LoginResponseType loginResponseType   = LoginResponseType.JSON;
+}

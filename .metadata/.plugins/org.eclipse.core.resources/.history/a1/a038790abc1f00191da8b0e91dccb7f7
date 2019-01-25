@@ -1,0 +1,5 @@
+package com.ph.security.rbac.repository;
+
+public class PhRepository {
+
+}

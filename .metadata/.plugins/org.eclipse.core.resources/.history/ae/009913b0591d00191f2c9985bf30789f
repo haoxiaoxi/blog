@@ -1,0 +1,16 @@
+package com.ph.security.core.properties;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+/**
+ * 配置文件设置类
+ * @author panha
+ *
+ */
+@ConfigurationProperties(prefix = "ph.security")
+public class SecurityProperties {
+
+	private SecurityBrowserProperties securityBrowserProperties;
+	
+	
+}

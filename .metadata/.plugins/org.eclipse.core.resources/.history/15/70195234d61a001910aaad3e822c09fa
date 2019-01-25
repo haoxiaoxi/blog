@@ -1,0 +1,50 @@
+package com.ph.web.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ph.web.dto.User;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+	@GetMapping
+	public List<User> getUser(String userName){
+		System.out.println(userName);
+		List<User> userList = new ArrayList<User>();
+		userList.add(new User());
+		userList.add(new User());
+		userList.add(new User());
+		return userList;
+	}
+	
+	@PostMapping
+	public User addUser(@RequestBody User user) {
+		System.out.println(user.toString());
+		user.setId(1);
+		return user;
+	}
+	
+	@PutMapping("/{id:\\d+}")
+	public User update( @RequestBody User user) {
+
+		System.out.println(user.toString());
+		user.setUserName("ph");
+		return user;
+	}
+	
+	@DeleteMapping("/{id:\\d+}")
+	public void deleteUser(@PathVariable int id) {
+		System.out.println(id);
+	}
+} 

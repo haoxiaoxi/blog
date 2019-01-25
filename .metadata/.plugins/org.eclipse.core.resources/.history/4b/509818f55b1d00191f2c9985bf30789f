@@ -1,0 +1,51 @@
+package com.ph.security.brower.authentication;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ph.security.core.properties.SecurityProperties;
+import com.ph.security.core.properties.defaults.LoginResponseType;
+import com.ph.security.core.support.SimpleResponse;
+
+public class PhAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+
+	private Logger logger = LoggerFactory.getLogger(getClass());
+
+	@Autowired
+	private ObjectMapper objectMapper;
+	//配置项
+	@Autowired
+	private SecurityProperties securityProperties;
+	//可以从该Cache中获取跳转登录界面之前的请求
+	private RequestCache requestCache = new HttpSessionRequestCache();
+	
+	@Override
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws ServletException, IOException {
+		logger.info("登录成功");
+		if (LoginResponseType.JSON.equals(securityProperties.getBrowser().getLoginResponseType())) {
+			response.setContentType("application/json;charset=UTF-8");
+			String type = authentication.getClass().getSimpleName();
+			response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(type)));
+		}else {
+			//1.判断是否设置了登录成功后，跳转的路径
+			if (StringUtils.isNotBlank(securityProperties.getBrowser().getSingInSuccessUrl())) {
+				
+			}
+		}
+		super.onAuthenticationSuccess(request, response, authentication);
+	}
+}

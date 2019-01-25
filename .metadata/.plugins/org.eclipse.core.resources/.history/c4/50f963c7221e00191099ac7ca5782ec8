@@ -1,0 +1,14 @@
+package com.ph.security.core.validate.code;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ValidateCodeProcessorHolder {
+
+	//将所有实现ValidateCodeProcessor该接口的类放在map中
+	@Autowired
+	private Map<String, ValidateCodeProcessor> validateCodeProcessors;
+}

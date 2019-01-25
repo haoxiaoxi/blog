@@ -1,0 +1,17 @@
+package com.ph.security.rbac.init;
+
+public class AbstractDataInitializer implements DataInitializer {
+
+	@Override
+	public Integer getIndex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void init() throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+}

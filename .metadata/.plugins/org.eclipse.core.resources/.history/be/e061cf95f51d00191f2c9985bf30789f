@@ -1,0 +1,6 @@
+package com.ph.security.core.properties;
+
+public class SecurityValidateCodeProperties {
+
+	private 
+}

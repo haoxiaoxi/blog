@@ -1,0 +1,15 @@
+package com.ph.security.core.properties.conf;
+
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * 
+ * @author panha
+ *
+ */
+@Configuration
+@EnableConfigurationProperties(SecurityProperties.class)
+public class SecurityCoreConfig {
+
+}

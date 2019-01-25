@@ -1,0 +1,16 @@
+package com.ph.security.core.properties;
+
+import com.ph.security.core.properties.defaults.LoginResponseType;
+
+/**
+ * 浏览器环境配置项
+ * @author panha
+ *
+ */
+public class SecurityBrowserProperties {
+
+	//登录页面，当引发登录行为的url以html结尾时，会跳到这里配置的url上,默认是phLogin.html界面
+	private String phLogin = "/phLogin.html";
+	//默认是json格式
+	private LoginResponseType loginResponseType   = LoginResponseType.JSON;
+}

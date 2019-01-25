@@ -1,0 +1,16 @@
+package com.ph.security.brower.authentication;
+
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+
+public class PhAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+
+	private Logger logger = LoggerFactory.getLogger(getClass());
+
+	@Autowired
+	private ObjectMapper objectMapper;
+
+	@Autowired
+	private SecurityProperties securityProperties;
+
+	private RequestCache requestCache = new HttpSessionRequestCache();
+}

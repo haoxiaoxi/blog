@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package com.ph.security.rbac.domain;
+
+/**
+ * @author [anha
+ *
+ */
+public enum ResourceType {
+	
+	MENU,
+	
+	BUTTON
+
+}

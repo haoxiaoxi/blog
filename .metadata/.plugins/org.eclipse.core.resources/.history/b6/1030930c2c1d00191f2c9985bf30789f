@@ -1,0 +1,6 @@
+package com.ph.security.brower;
+
+public class BrowerSecurityController {
+
+	private Logger logger = LoggerFactory.getLogger(getClass());
+}

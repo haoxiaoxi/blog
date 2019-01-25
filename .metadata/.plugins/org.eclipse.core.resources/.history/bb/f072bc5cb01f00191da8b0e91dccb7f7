@@ -1,0 +1,12 @@
+package com.ph.security.rbac.repository.support;
+
+import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
+
+public class ImoocImplicitNamingStrategy extends ImplicitNamingStrategyJpaCompliantImpl {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3777146865833261259L;
+
+}

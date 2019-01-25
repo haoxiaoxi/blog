@@ -1,0 +1,8 @@
+package com.ph.security.rbac.repository;
+
+import com.ph.security.rbac.domain.Admin;
+
+@Repository
+public interface AdminRepository extends PhRepository<Admin> {
+
+}

@@ -1,0 +1,30 @@
+package com.ph;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+	
+	@Bean
+    @ConfigurationProperties(locations = "classpath:mail.properties", prefix = "mail")
+    public MailProperties mailProperties(){
+        MailProperties mp = new MailProperties();
+        System.out.println("zheli " + mp);
+        return mp;
+
+    }
+	
+	@GetMapping("hello")
+	public String hello() {
+		return "spring security hello";
+	}
+
+}

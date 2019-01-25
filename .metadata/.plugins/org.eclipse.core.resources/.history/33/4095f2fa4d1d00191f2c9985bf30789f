@@ -1,0 +1,31 @@
+package com.ph.security.brower;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
+
+import com.ph.security.core.support.SimpleResponse;
+
+public class BrowerSecurityController {
+
+	private Logger logger = LoggerFactory.getLogger(getClass());
+	
+	//可以在RequestCache中将你之前请求的路径获取
+	private RequestCache requestCache  = new HttpSessionRequestCache();
+	
+	public SimpleResponse requireAuthentication(HttpServletRequest request,HttpServletResponse response) {
+		//从RequestCache将之前请求的Request获取
+		SavedRequest savedRequest = requestCache.getRequest(request, response);
+		if(savedRequest!=null) {
+			String url = savedRequest.getRedirectUrl();
+		}
+		
+		return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页");
+	}
+	
+}

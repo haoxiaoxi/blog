@@ -1,0 +1,22 @@
+package com.ph.security.rbac.init;
+
+/**
+ * 抽象数据初始化器，所有的数据初始化器应该继承此类
+ * @author panha
+ *
+ */
+public class AbstractDataInitializer implements DataInitializer {
+
+	@Override
+	public Integer getIndex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void init() throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+}

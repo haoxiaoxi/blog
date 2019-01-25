@@ -1,0 +1,38 @@
+package com.ph.security.brower.authentication;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ph.security.core.properties.SecurityProperties;
+
+public class PhAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+
+	private Logger logger = LoggerFactory.getLogger(getClass());
+
+	@Autowired
+	private ObjectMapper objectMapper;
+	//配置项
+	@Autowired
+	private SecurityProperties securityProperties;
+	//可以从该Cache中获取跳转登录界面之前的请求
+	private RequestCache requestCache = new HttpSessionRequestCache();
+	
+	@Override
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.onAuthenticationSuccess(request, response, authentication);
+	}
+}

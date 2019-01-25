@@ -1,0 +1,78 @@
+package com.ph.security.core.validate.code;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.ph.security.core.properties.SecurityProperties;
+import com.ph.security.core.properties.defaults.SecurityConstants;
+
+public class ValidateCodeFilter extends OncePerRequestFilter implements InitializingBean{
+
+	/**
+	 * 验证码校验失败处理器
+	 */
+	@Autowired
+	private AuthenticationFailureHandler authenticationFailureHandler;
+	
+	/**
+	 * 系统中的校验码处理器
+	 */
+	@Autowired
+	private ValidateCodeProcessorHolder validateCodeProcessorHolder;
+	
+	/**
+	 * 存放所有需要校验验证码的url
+	 */
+	private Map<String, ValidateCodeType> urlMap = new HashMap<>();
+	
+	/**
+	 *  将配置文件注入，获取到用户配置的url信息
+	 */
+	@Autowired
+	private SecurityProperties securityProperties;
+	
+	/* (non-Javadoc)
+	 * @see org.springframework.web.filter.GenericFilterBean#afterPropertiesSet()
+	 * 初始化配置信息，将需要拦截的url放到urlMap中
+	 */
+	@Override
+	public void afterPropertiesSet() throws ServletException {
+		super.afterPropertiesSet();
+		//使用账号密码登录的路径需要拦截
+		urlMap.put(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_FORM, ValidateCodeType.IMAGE);
+		//假如需要添加新的拦截路径，这个时候我在配置文件中添加一个url进行配置
+	}
+	
+	/**
+	 * @param url 需要拦截的路径，可能用,隔开
+	 * @param type 拦截的验证码的类型
+	 */
+	public void addUrlToMap(String urlString,ValidateCodeType type ) {
+		if(StringUtils.isNotBlank(urlString)) {
+			String[] urls = StringUtils.splitByWholeSeparatorPreserveAllTokens(urlString, ",");
+			for(String url : urls) {
+				urlMap.put(url, type);
+			}
+		}
+	}
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+}

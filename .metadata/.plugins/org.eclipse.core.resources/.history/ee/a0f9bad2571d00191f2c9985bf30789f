@@ -1,0 +1,9 @@
+package com.ph.security.core.properties.defaults;
+
+/**
+ * @author panha
+ *
+ */
+public interface SecurityConstants {
+
+}
